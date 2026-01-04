@@ -11,6 +11,7 @@ export default function ExperienceMemoryCards() {
   return (
     <>
     <NavBar/>
+    <div className="pointer-events-none fixed inset-0 z-50 scanlines" />
     <div className="w-full max-w-5xl mx-auto mt-10 px-6">
       <h2 className="text-3xl font-bold text-center mb-6 pt-10">Experiences</h2>
 
