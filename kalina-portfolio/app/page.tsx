@@ -6,7 +6,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/app/components/tooltip";
 import { useState } from 'react';
 import ResumeModal from './components/ResumeModal';
 import BottomBar from './components/BottomBar';
