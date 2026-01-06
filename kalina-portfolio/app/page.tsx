@@ -19,9 +19,13 @@ export default function Home() {
   const handleGoToNewTab = (href: string) => {
   window.open(href, '_blank');
   };
+
+  const swipe = new Audio('/sounds/swipe.mp3')
+  const hover = new Audio('/sounds/hover.mp3')
+  const select = new Audio('/sounds/select.mp3')
   const today = new Date();
-  const playSound = ()=>{
-    const audio =new Audio('/sounds/toggle_002.mp3');
+  const playSound = (audio:  HTMLAudioElement)=>{
+    //const audio = new Audio('/sounds/toggle_002.mp3');
     audio.play().catch(err=>console.log("audio play has failed", err))
   }
 
@@ -47,8 +51,9 @@ export default function Home() {
         height={100}
         alt="picture of the awesome person you should hire"
         onClick={()=>{setShowContactModal(true);
-          playSound();}
+          playSound(select);}
         }
+        onMouseEnter={()=>playSound(hover)}
         />
           </TooltipTrigger>
           <TooltipContent>
@@ -63,6 +68,8 @@ export default function Home() {
     </div>
     <div className='absolute bottom-5 left-4 z-40 sm:left-8' >
       <div className='hover:animate-shake cursor-default rounded-full bg-gray-400 border-[#85d8db] border-2 p-1 transition-transform'
+      onClick={()=> playSound(select)}
+      onMouseEnter={()=> playSound(hover)}
       >
         <Tooltip>
           <TooltipTrigger>
@@ -80,7 +87,7 @@ export default function Home() {
       <Channel channelName='Projects' href='/projects' channelType='link' />
       <Channel channelName='Experience/Leadership' href='/experience' channelType='link'/>
       <Channel channelName='Download my Resume!' channelType='popup' 
-      onClick={() => {setShowResumeModal(true)
+      onClick={() => {setShowResumeModal(true); playSound(select)
       }}/>
       <Channel channelName='Github' channelType='popup' onClick={()=>handleGoToNewTab("https://github.com/kalinatringas")}/>
       <Channel channelName='LinkedIn' channelType='popup' onClick={()=>handleGoToNewTab("https://www.linkedin.com/in/kalina-tringas/")}/>

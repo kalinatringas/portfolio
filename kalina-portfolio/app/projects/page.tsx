@@ -9,10 +9,15 @@ import ProjectCard from "../components/ProjectCard";
 export default function Porfolio(){
     const [activeIndex, setActiveIndex] = useState(0);
     const maxIndex = projects.length -1;
-
+    const swipe = new Audio('/sounds/swipe.mp3')
+    const playSound = (audio:  HTMLAudioElement)=>{
+        audio.currentTime = 0;
+        audio.play().catch(err=>console.log("audio play has failed", err))
+    }
     useEffect (()=>{
         const handleWheel = (e: WheelEvent)=>{
             if (scrollLocked.current) return;
+            playSound(swipe);
             if(e.deltaY > 10 && activeIndex < maxIndex){
                 scrollLocked.current = true;
                 setActiveIndex((i)=>i+1);
@@ -31,6 +36,7 @@ export default function Porfolio(){
 
     useEffect(()=>{
         const handleKey = (e:KeyboardEvent)=>{
+            playSound(swipe);
             if(e.key === "ArrowDown" && activeIndex < maxIndex){
                 setActiveIndex((i)=>i+1);
             }
