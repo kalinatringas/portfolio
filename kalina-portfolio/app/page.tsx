@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/app/components/tooltip";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ResumeModal from './components/ResumeModal';
 import BottomBar from './components/BottomBar';
 import ContactModal from './components/ContactMe';
@@ -19,6 +19,11 @@ export default function Home() {
   const handleGoToNewTab = (href: string) => {
   window.open(href, '_blank');
   };
+  const today = new Date();
+  const playSound = ()=>{
+    const audio =new Audio('/sounds/toggle_002.mp3');
+    audio.play().catch(err=>console.log("audio play has failed", err))
+  }
 
   return (<>
 
@@ -32,8 +37,8 @@ export default function Home() {
       </div>
     
     {/* Right image */}
-      <div className='absolute bottom-4 right-8 z-40 '>
-        <div className=' hover:animate-shake cursor-default-normal rounded-2xl bg-gray-400 p-1 transition-transform'>
+      <div className='absolute bottom-4 sm:right-8 z-40 right-4'>
+        <div className=' hover:animate-shake cursor-default-normal rounded-full bg-gray-400 border-2 border-[#85d8db] p-1 transition-transform'>
         <Tooltip>
           <TooltipTrigger>
             <Image 
@@ -41,7 +46,9 @@ export default function Home() {
         width={100}
         height={100}
         alt="picture of the awesome person you should hire"
-        onClick={()=>setShowContactModal(true)}
+        onClick={()=>{setShowContactModal(true);
+          playSound();}
+        }
         />
           </TooltipTrigger>
           <TooltipContent>
@@ -50,6 +57,21 @@ export default function Home() {
         </Tooltip>
         
         </div>
+      </div>
+      {/* A willow perhaps! */}
+      
+    </div>
+    <div className='absolute bottom-5 left-4 z-40 sm:left-8' >
+      <div className='hover:animate-shake cursor-default rounded-full bg-gray-400 border-[#85d8db] border-2 p-1 transition-transform'
+      >
+        <Tooltip>
+          <TooltipTrigger>
+            <h1 className='w-25 h-25 flex justify-center text-white text-center items-center'>Wii-low</h1>
+          </TooltipTrigger>
+          <TooltipContent>
+            Coming soon!
+          </TooltipContent>
+          </Tooltip> 
       </div>
     </div>
   {/* All the Little Channels!! */}
@@ -71,7 +93,13 @@ export default function Home() {
       isOpen = {showContactModal}
       onClose = {()=> setShowContactModal(false)}
     />
-    <BottomBar className="pointer-events-none absolute z-0 -bottom-4 w-full"/>
+    <p className='bottom-5 z-10 text-black text-2xl -translate-1/2 left-1/2 absolute hidden sm:block'>{today.toLocaleDateString('en-US',{
+        weekday: 'short',
+        year: 'numeric',
+        month:'numeric',
+        day: 'numeric'
+    })}</p>
+    <BottomBar className="pointer-events-none absolute z-0 -bottom-4 w-full sm:block hidden "/>
 
   </div>
     <div className="pointer-events-none fixed inset-0 z-20 scanlines" />

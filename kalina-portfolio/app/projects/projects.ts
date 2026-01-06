@@ -17,6 +17,26 @@ export const projects: Project[] = [
     ]
   },
   {
+    name:"Dress Up Game",
+    image:"/tumi.png",
+    link:"https://tumi-dress-up.netlify.app/",
+    description:[
+        "Personal dress up game build in React and Typescript",
+        "Hand-drew eleven custom wardrobe elements as a gift",
+        "Clean component architecture with custom illustrations"
+    ]
+  },
+  {
+    name:"Plan Your Care",
+    image:"/planyourcare.png",
+    link:"https://devpost.com/software/planurcare",
+    description:[
+        "Award Winning Hackathon Project, best overall and best use of MongoDB",
+        "First hackathon, completed in 36 hours and compeated against 30+ teams",
+        "Integrated Google Maps API and built an interactive states map from scratch"
+    ]
+  },
+  {
     name: "Kogna",
     image: "/kogna.png",
     link: "https://kogna.io/",
@@ -37,4 +57,5 @@ export const projects: Project[] = [
       "Optimized data structures for efficiency"
     ]
   }
+  
 ];
