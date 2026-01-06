@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/app/components/tooltip";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ResumeModal from './components/ResumeModal';
 import BottomBar from './components/BottomBar';
 import ContactModal from './components/ContactMe';
@@ -20,13 +20,23 @@ export default function Home() {
   window.open(href, '_blank');
   };
 
-  const swipe = new Audio('/sounds/swipe.mp3')
-  const hover = new Audio('/sounds/hover.mp3')
-  const select = new Audio('/sounds/select.mp3')
+  const swipeRef = useRef<HTMLAudioElement | null>(null);
+  const hoverRef = useRef<HTMLAudioElement | null>(null);
+  const selectRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize audio on client side only
+  useEffect(() => {
+    swipeRef.current = new Audio('/sounds/swipe.mp3');
+    hoverRef.current = new Audio('/sounds/hover.mp3');
+    selectRef.current = new Audio('/sounds/select.mp3');
+  }, []);
   const today = new Date();
-  const playSound = (audio:  HTMLAudioElement)=>{
+  const playSound = (audio:  HTMLAudioElement | null)=>{
     //const audio = new Audio('/sounds/toggle_002.mp3');
-    audio.play().catch(err=>console.log("audio play has failed", err))
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch(err => console.log("audio play has failed", err));
+    }
   }
 
   return (<>
@@ -51,9 +61,9 @@ export default function Home() {
         height={100}
         alt="picture of the awesome person you should hire"
         onClick={()=>{setShowContactModal(true);
-          playSound(select);}
+          playSound(selectRef.current);}
         }
-        onMouseEnter={()=>playSound(hover)}
+        onMouseEnter={()=>playSound(hoverRef.current)}
         />
           </TooltipTrigger>
           <TooltipContent>
@@ -68,8 +78,8 @@ export default function Home() {
     </div>
     <div className='absolute bottom-5 left-4 z-40 sm:left-8' >
       <div className='hover:animate-shake cursor-default rounded-full bg-gray-400 border-[#85d8db] border-2 p-1 transition-transform'
-      onClick={()=> playSound(select)}
-      onMouseEnter={()=> playSound(hover)}
+      onClick={()=> playSound(selectRef.current)}
+      onMouseEnter={()=> playSound(hoverRef.current)}
       >
         <Tooltip>
           <TooltipTrigger>
@@ -87,7 +97,7 @@ export default function Home() {
       <Channel channelName='Projects' href='/projects' channelType='link' />
       <Channel channelName='Experience/Leadership' href='/experience' channelType='link'/>
       <Channel channelName='Download my Resume!' channelType='popup' 
-      onClick={() => {setShowResumeModal(true); playSound(select)
+      onClick={() => {setShowResumeModal(true); playSound(selectRef.current)
       }}/>
       <Channel channelName='Github' channelType='popup' onClick={()=>handleGoToNewTab("https://github.com/kalinatringas")}/>
       <Channel channelName='LinkedIn' channelType='popup' onClick={()=>handleGoToNewTab("https://www.linkedin.com/in/kalina-tringas/")}/>
