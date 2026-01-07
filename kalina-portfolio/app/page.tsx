@@ -87,7 +87,7 @@ export default function Home() {
             <WillowAttack/>
           </TooltipTrigger>
           <TooltipContent>
-            Coming soon!
+            Release the willow...
           </TooltipContent>
           </Tooltip> 
       </div>

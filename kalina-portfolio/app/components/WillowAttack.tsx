@@ -63,7 +63,7 @@ export default function WillowAttack(){
                 onClick={triggerFlurry} 
                 className="relative z-10 w-25 h-25 px-4 py-2 bg-gray-400 text-white rounded-full "
             >
-                click meh
+                Click mii!
             </button>
             
             <style jsx>{`
