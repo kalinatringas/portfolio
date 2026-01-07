@@ -118,7 +118,7 @@ export default function Home() {
         day: 'numeric'
     })}</p>
     <BottomBar className="pointer-events-none absolute z-0 -bottom-4 w-full sm:block hidden "/>
-    
+    <p className='absolute bottom-1 left-1/2 -translate-x-1/2 text-xs'>This portfolio is a personal project inspired by Nintendo Wii's interface design. Not affiliated with or endorsed by Nintendo.</p>
   </div>
     <div className="pointer-events-none fixed inset-0 z-20 scanlines" />
 
