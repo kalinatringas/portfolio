@@ -11,6 +11,7 @@ import { useState, useRef, useEffect } from 'react';
 import ResumeModal from './components/ResumeModal';
 import BottomBar from './components/BottomBar';
 import ContactModal from './components/ContactMe';
+import WillowAttack from './components/WillowAttack';
 
 export default function Home() {
 
@@ -83,7 +84,7 @@ export default function Home() {
       >
         <Tooltip>
           <TooltipTrigger>
-            <h1 className='w-25 h-25 flex justify-center text-white text-center items-center'>Wii-low</h1>
+            <WillowAttack/>
           </TooltipTrigger>
           <TooltipContent>
             Coming soon!
@@ -117,7 +118,7 @@ export default function Home() {
         day: 'numeric'
     })}</p>
     <BottomBar className="pointer-events-none absolute z-0 -bottom-4 w-full sm:block hidden "/>
-
+    
   </div>
     <div className="pointer-events-none fixed inset-0 z-20 scanlines" />
 
