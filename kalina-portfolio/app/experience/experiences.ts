@@ -34,18 +34,6 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: 3,
-    slot: "Slot 03",
-    title: "Technical Skills",
-    subtitle: "What I use daily",
-    dates: "",
-    details: [
-      "Languages: C++, Python, JavaScript, TypeScript",
-      "Frameworks: React, Next.js",
-      "Tools: Git, Tailwind, Figma",
-    ],
-  },
-  {
     id: 4,
     slot: "Slot 04",
     title: "Genesis Dance Crew",
@@ -57,4 +45,26 @@ export const experiences: Experience[] = [
         "Managed internal communications and documentation systems for 50+ members"
     ],
   },
+  {
+    id: 3,
+    slot: "Slot 03",
+    title: "Kogna",
+    subtitle: "Founding Front-end Developer",
+    dates: "Sep 2025 - Jan 2026",
+    details: [
+      "Develop production-ready UI components using React, TypeScript, and TailwindCSS",
+    "Build AI business intelligence dashboards, implementing full-stack features connecting UI to backend data systems",
+    "Collaborate with backend engineers to integrate RESTful APIs and develop AI-powered chatbot for natural language queries",
+    "Contribute to Agile development processes within a 6-person team, participating in code reviews, sprint planning, and following software engineering best practices"
+    ]
+  }, {
+    id: 5,
+    slot: "Slot 05",
+    title: "KidzHack",
+    subtitle: "Software Engineer Intern",
+    dates: "Jan 2026 - Now",
+    details: [
+      "Implement responsive, user-centered front-end features with Angular and CSS, supporting platform integration for youth-focused educational technologies"
+    ]
+  }
 ];
